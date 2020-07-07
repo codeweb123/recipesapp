@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+    def index
+        @users = User.paginate(page: params[:page], per_page: 5)
+    end
 
     def new
         @user = User.new
@@ -16,6 +19,21 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        @user_recipes = @user.recipes.paginate(page: params[:page], per_page: 5)
+    end
+
+    def edit
+        @user = User.find(params[:id])
+    end
+
+    def update
+        @user = User.find(params[:id])
+        if @user.update(user_params)
+            flash[:success] = "Your account was updated!"
+            redirect_to @user
+        else
+            render 'edit'
+        end
     end
 
 private

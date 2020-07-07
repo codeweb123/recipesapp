@@ -1,4 +1,6 @@
 <h1><%= "User #{@user.username}'s profile" %></h1>
 
 <h4><%= @user.username %>'s recipes</h4>
-<%= render 'recipes/recipe', obj: @user.recipes %>
+<%= will_paginate @user_recipes %>
+<%= render 'recipes/recipe', obj: @user_recipes %>
+<%= will_paginate @user_recipes %>
