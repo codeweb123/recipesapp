@@ -1,0 +1,8 @@
+<h1>Recipe Name: <%= @recipe.name.capitalize %></h1>
+<div class= "col-md-8">
+    <h4 class="description"> Description: </h4>
+    <hr />
+    <%= @recipe.description %>
+    Created by:
+    <%= @recipe.user.username %>
+</div>

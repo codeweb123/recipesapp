@@ -1,0 +1,14 @@
+<h1> List of all Recipes </h1>
+
+<% @recipes.each do |recipe| %>
+    <div class="row">
+        <div class= "col-md-2"> 
+            <section class="center">
+            </section>
+        </div>
+    <div class="col-md-8">
+        <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
+        <p><%= truncate(recipe.description, length: 100) %></p>
+        <h6><%= recipe.created_at %></h6>
+    </div>
+    <% end %>
