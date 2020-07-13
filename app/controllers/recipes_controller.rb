@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
         @recipe = Recipe.new(recipe_params)
         @recipe.user = current_user
             if @recipe.save
-                flash[:success] = "Recipe was created!"
+                flash[:success] = "Recipe was created!" #flash is a hash
                 redirect_to recipe_path(@recipe)            
             else
                 render 'new'
@@ -53,11 +53,11 @@ private
     end
 
     def recipe_params
-        params.require(:recipe).permit(:name, :description)
+        params.require(:recipe).permit(:name, :description, ingredient_ids: [])
     end
     
     def require_same_user
-        if current_user != @recipe.user
+        if current_user != @recipe.user and !current_user.admin?
             flash[:danger] = " You can only edit or delete your own recipes"
             redirect_to recipes_path
         end

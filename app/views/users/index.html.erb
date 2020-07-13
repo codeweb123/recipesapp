@@ -1,14 +1,16 @@
-<h1>Show all the Users!</h1>
+<h1 align="center">All Users</h1>
 <div align="center">
 <%= will_paginate %>
 <% @users.each do |user| %>
     <ul class="listing">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-12">
             <li class="user-title"><%= link_to user.username.capitalize, user_path(user) %></li>
             <li><%= pluralize(user.recipes.count, "recipe") if user.recipes %>
+            <% if logged_in? && current_user.admin? && !user.admin? %>
             <li><%= link_to "Delete this user", user_path(user), method: :delete,
                         data: {confirm: "Are you sure you want to delete the user and all recipes?"} %></li>
+            <% end %>
             </div>
         </div>
     </ul>

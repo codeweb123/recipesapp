@@ -5,5 +5,16 @@ class User < ApplicationRecord
 
     has_many :recipes, dependent: :destroy #all recipes get destroyed!
     has_secure_password
-    validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
+    validates :password, presence: true, length: { minimum: 5 }
+    require 'securerandom'
+
+    def self.create_with_omniauth(auth_hash)
+        create! do |user|
+          user.provider = auth_hash["provider"]
+          user.uid = auth_hash["uid"]
+          user.username = auth_hash["info"]["name"]
+          user.email = auth_hash[:info][:email]
+          user.password = SecureRandom.urlsafe_base64
+        end
+    end
 end

@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'figaro'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
