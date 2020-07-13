@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :recipes, dependent: :destroy #all recipes get destroyed!
     has_secure_password
     validates :password, presence: true, length: { minimum: 5 }
+    has_many :comments, dependent: :destroy
     require 'securerandom'
 
     def self.create_with_omniauth(auth_hash)

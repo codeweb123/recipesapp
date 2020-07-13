@@ -3,7 +3,11 @@
         <div class= "col-md-12 justify-content-center"> 
             <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
             <p><%= truncate(recipe.description, length: 150) %></p>
-            <h6><%= recipe.created_at.strftime("%A, %B %d") %></h6>
+            <h6><%= recipe.created_at.strftime("%A, %B %d") %> ago by <%= recipe.user.username.capitalize %>
+                                            | <%= pluralize(recipe.comments.count, 'Comment') %></h6>
+            <p>Ingredients: <%= render recipe.ingredients %></p>
+            
+
         <% if logged_in? && (current_user == recipe.user || current_user.admin?) %>
             <div class="recipe-actions">
             <%= link_to "Edit this recipe", edit_recipe_path(recipe), class: "btn btn-xs btn-warning" %>

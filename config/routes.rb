@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   root to: "users#new"
   get '/auth/:provider/callback', to: 'sessions#omnicreate'
 
-  resources :recipes
+  resources :recipes do
+    resources :comments, only: [:create] # nested route 
+  end
 
   get '/signup', to: 'users#new'
   resources :users, except: [:new]
