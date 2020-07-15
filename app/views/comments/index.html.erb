@@ -1,0 +1,19 @@
+<h1 align="center">Recipe: <%= @recipe.name.capitalize %></h1>
+<% if @recipe.comments != 0 %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h3 align="center">Comments: </h3>
+        <id="messages">
+          <%= render partial: 'comments/comments', object: @comments %>
+        </div>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h3>No Comments</h3>
+    </div>
+  </div>
+<% end %>
+    <div align="center"><%= link_to "[Back to your recipe]", recipe_path(@recipe) %></div>
+    <div align="center"><%= link_to "[Back to ALL RECIPES]", recipes_path %></div>

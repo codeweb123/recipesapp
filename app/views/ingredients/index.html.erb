@@ -2,7 +2,7 @@
 <div align="center">
 <%= will_paginate %>
 <% @ingredients.each do |ing| %>
-    <ul class="listing">
+    <ul class="listing ingredients-border">
         <div class="row">
             <div class="col-md-12">
             <li class="user-title"><%= link_to ing.name.capitalize, ingredient_path(ing) %></li>

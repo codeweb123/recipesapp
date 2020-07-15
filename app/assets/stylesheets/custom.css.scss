@@ -4,15 +4,46 @@
 .center {
   text-align: center;
 }
-
 .navbar {
-  background-color: lavender;
+  background-color: #285f54; 
+}
+.nav-item {
+  color: #1abc9c;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #1abc9c;
+}
+.nav-link {
+  color: #1abc9c;
+}
+
+.dropdown-item {
+  color: #1abc9c;
+}
+
+.recipe-border {
+  border: solid 2px #1abc9c;
+  margin-bottom: 15px;
+}
+
+.user-border {
+  border: solid 2px #1abc9c;
+  margin-bottom: 15px;
+}
+.login-button {
+  align-items: center;
+}
+
+.ingredients-border {
+  border: solid 2px #1abc9c;
+  margin-bottom: 15px;
 }
 
 .jumbotron {
   background-image: asset-url('cover_image.jpg');
   background-size: cover;
   height: 300px;
+  align-items: left;
 }
 
 #logo {
@@ -30,23 +61,25 @@
 }  
 
 .jumbotron h1 {
-  color: rgb(129, 127, 127);
-  text-align: center;
+  color: rgb(255, 255, 255);
+  text-align: left;
   margin-bottom: 30px;
   letter-spacing: -1px;
   font-weight: bold;
+  font-family: Arvo;
 }
 
 .jumbotron h2 {
-  color: rgb(255, 255, 255);
-  text-align: center;
+  color: #bbeea1;
+  text-align: left;
   margin-bottom: 30px;
   letter-spacing: -1px;
   font-weight: bold;
+  font-family: Arvo;
 }
 
 .btn-xlarge {
-  background-color: lavender;
+  background-color: #1abc9c;
 }
 
 .btn-xlarge:hover {
@@ -56,20 +89,21 @@
 
 body {
   height: 100%;
+  background-color:#f3f3f3;
 }
 
 footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
-  color: #777;
+  color: #285f54;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 
 footer a {
-  color: #555;
+  color: #285f54;
 }
 
 footer a:hover {

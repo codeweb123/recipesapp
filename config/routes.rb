@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   root to: "users#new"
   get '/auth/:provider/callback', to: 'sessions#omnicreate'
 
-  resources :recipes do
-    resources :comments, only: [:create] # nested route 
+  resources :recipes, shallow: true do
+    resources :comments, only: [:create, :index, :new] # nested routes 
   end
 
   get '/signup', to: 'users#new'
@@ -23,5 +23,9 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 #3 routes for login feature
   resources :ingredients, except: [:destroy]
+
+  resources :recipes do
+    resources :recipe_ingredients, only: [:new, :create]
+  end
   
 end

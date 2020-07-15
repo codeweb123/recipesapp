@@ -3,12 +3,13 @@ class RecipesController < ApplicationController
     before_action :instance_of_recipe, only: [:show, :edit, :update, :destroy]
     before_action :require_user, except: [:index, :show]
     before_action :require_same_user, only: [:edit, :update, :destroy]
+
     def index
         @recipes = Recipe.paginate(page: params[:page], per_page: 5)
     end
 
     def show
-        @comment = Comment.new
+        @comments = Comment.new
         @comments = @recipe.comments.paginate(page: params[:page], per_page: 5)
     end
 
@@ -17,18 +18,16 @@ class RecipesController < ApplicationController
     end
 
     def create
-        @recipe = Recipe.new(recipe_params)
-        @recipe.user = current_user
-            if @recipe.save
-                flash[:success] = "Recipe was created!" #flash is a hash
-                redirect_to recipe_path(@recipe)            
-            else
-                render 'new'
-            end
+        @recipe = current_user.recipes.build(recipe_params)
+        if @recipe.save
+          flash[:success] = "Recipe created!"
+          redirect_to recipe_path(@recipe)
+        else
+            render "new"
+        end
     end
-
+                
     def edit
-
     end
 
     def update
@@ -54,7 +53,7 @@ private
     end
 
     def recipe_params
-        params.require(:recipe).permit(:name, :description, ingredient_ids: [])
+        params.require(:recipe).permit(:name, :description, ingredient_ids: [], recipe_ingredient_attributes: [:recipe_id, :ingredient_id, :quantity])
     end
     
     def require_same_user
@@ -64,4 +63,3 @@ private
         end
     end
 end
-
