@@ -1,5 +1,4 @@
 class Ingredient < ApplicationRecord
-    attr_accessor :quantity
     validates :name, presence: true, length: { minumum: 3, maximum: 25 }
     validates_uniqueness_of :name
     has_many :recipe_ingredients 

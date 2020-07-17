@@ -2,11 +2,9 @@ Rails.application.routes.draw do
   #root "pages#home"
   get 'pages/home', to: 'pages#home'
   
-  
   #get "/auth/:provider/callback" => "sessions#create"
   #get "/signout" => "sessions#destroy", :as => :signout
  
-
   #get 'auth/github', as: "login"
   root to: "users#new"
   get '/auth/:provider/callback', to: 'sessions#omnicreate'
@@ -24,8 +22,10 @@ Rails.application.routes.draw do
 #3 routes for login feature
   resources :ingredients, except: [:destroy]
 
+  resources :recipe_ingredients, only: [:new, :create, :show] 
+
   resources :recipes do
-    resources :recipe_ingredients, only: [:new, :create]
+    resources :recipe_ingredients, only: [:new, :create, :show]
   end
   
 end

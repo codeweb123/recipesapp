@@ -6,10 +6,9 @@
     <% end %>
     </ol>
     <% end %>
-    <div class="row">
+<div class="row">
   <div class="col-md-12">
     <%= form_for(@recipe, :html => {class: "form-horizontal", multipart: true, role: "form"}) do |f| %>
-      
       <div class="form-group">
         <div class="control-label col-md-2">
           <%= f.label :name %>
@@ -35,22 +34,14 @@
           </div>
         </div>
       </div>
-    <div class="form-group">
-        <div class="row">
-          <div class="col-md-offset-2 col-md-8">
-          <%= f.fields_for :recipe_ingredients do |q| %>
-            <%= q.label :quantity %>
-            <%= q.text_field :quantity %>
-            <%= q.hidden_field :recipe_id%>
-        <% end%>
-    <div class="form-group">
-        <div class="col-md-4 col-md-offset-4 colormatch">
+      <div class="form-group">
+        <div class="col-md-4 col-md-offset-4">
           <%= f.submit class: "btn btn-primary btn-lg btn-xlarge" %>
         </div>
-    </div>
+      </div>
     <% end %>
     <div class="col-md-4 col-md-offset-4 colormatch">
-      [ <%= link_to "Nevermind! See All Recipes", recipes_path %> ]
+      [ <%= link_to "Return to recipes listing", recipes_path %> ]
     </div>
   </div>
-</div>
+
