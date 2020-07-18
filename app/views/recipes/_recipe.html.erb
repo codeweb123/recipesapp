@@ -5,8 +5,7 @@
             <p><%= truncate(recipe.description, length: 150) %></p>
             <h6><%= recipe.created_at.strftime("%A, %B %d") %> ago by <%= recipe.user.username.capitalize %>
                                             | <%= pluralize(recipe.comments.count, 'Comment') %></h6>
-            <p>Ingredients: <%= render recipe.ingredients %></p>
-            
+            <h6> </h6>
 
         <% if logged_in? && (current_user == recipe.user || current_user.admin?) %>
             <div class="recipe-actions">

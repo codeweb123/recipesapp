@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
         redirect_to recipe_comments_path(@recipe)
       else
         flash[:danger] = "Comment was not created"
-        redirect_to comment_path
+        render 'new'
       end
     end
     

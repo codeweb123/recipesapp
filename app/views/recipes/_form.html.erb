@@ -34,14 +34,30 @@
           </div>
         </div>
       </div>
+      <br>
+    <%= fields_for :recipe_ingredients do |ri| %>
+    <div class="nested_fields">
+       <div align="center" class="field">
+         <%= ri.label :ingredient %>
+         <%= ri.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
+       </div>
+       <br>
+       <div align="center" class="field">
+          <%= ri.label :quantity %>
+          <%= ri.number_field :quantity %>
+       </div>
+       <br>
+       <br>
+    </div>
+    <% end %>
       <div class="form-group">
-        <div class="col-md-4 col-md-offset-4">
+        <div align= "center" class="col-md-12">
           <%= f.submit class: "btn btn-primary btn-lg btn-xlarge" %>
         </div>
       </div>
     <% end %>
-    <div class="col-md-4 col-md-offset-4 colormatch">
-      [ <%= link_to "Return to recipes listing", recipes_path %> ]
+    <div align= "center" class="col-md-12">
+      [ <%= link_to "All Recipes", recipes_path %> ]
     </div>
   </div>
 
