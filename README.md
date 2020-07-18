@@ -15,7 +15,7 @@ Linux and macOS:
 
 -download or clone this project
 
--cd into recipeapp directory
+-cd into recipesapp directory
 
 -run bundle install in your terminal
 
