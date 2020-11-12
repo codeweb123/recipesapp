@@ -1,0 +1,5 @@
+<h4> Search: </h4> 
+<%= form_tag recipes_path, method: :get do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
+<%= submit_tag("Search", class: "btn btn-large btn-primary", name: nil) %>
+<% end %>

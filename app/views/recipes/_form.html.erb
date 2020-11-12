@@ -1,11 +1,11 @@
 <% if @recipe.errors.any? %>
-    <%= pluralize(@recipe.errors.count, "error") %>
+  <%= pluralize(@recipe.errors.count, "error") %>
     <ol>
-    <% @recipe.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-    <% end %>
+      <% @recipe.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
     </ol>
-    <% end %>
+<% end %>
 <div class="row">
   <div class="col-md-12">
     <%= form_for(@recipe, :html => {class: "form-horizontal", multipart: true, role: "form"}) do |f| %>
@@ -41,20 +41,20 @@
          <%= ri.label :ingredient %>
          <%= ri.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
        </div>
-       <br>
+        <br>
        <div align="center" class="field">
           <%= ri.label :quantity %>
           <%= ri.number_field :quantity %>
        </div>
-       <br>
-       <br>
+        <br>
+        <br>
     </div>
     <% end %>
-      <div class="form-group">
-        <div align= "center" class="col-md-12">
-          <%= f.submit class: "btn btn-primary btn-lg btn-xlarge" %>
-        </div>
+    <div class="form-group">
+      <div align= "center" class="col-md-12">
+        <%= f.submit class: "btn btn-primary btn-lg btn-xlarge" %>
       </div>
+    </div>
     <% end %>
     <div align= "center" class="col-md-12">
       [ <%= link_to "All Recipes", recipes_path %> ]

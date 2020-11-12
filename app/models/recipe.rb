@@ -10,4 +10,9 @@ class Recipe < ApplicationRecord
     has_many :ingredients, through: :recipe_ingredients
     has_many :comments, dependent: :destroy
 
+
+
+    def self.search(searchword)
+        self.where('name LIKE ?', "%#{searchword}%")
+    end
 end

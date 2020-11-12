@@ -6,6 +6,12 @@ class RecipesController < ApplicationController
 
     def index
         @recipes = Recipe.paginate(page: params[:page], per_page: 5)
+            if params[:search]
+                @recipes = Recipe.search(params[:search])
+                #@recipes = Recipe.where('name LIKE ?', "%#{params[:search]}%")
+            else 
+                @recipes = Recipe.all
+            end    
     end
 
     def show

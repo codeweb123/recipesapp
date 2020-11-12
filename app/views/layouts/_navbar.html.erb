@@ -1,59 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-pink">
+  <nav class="navbar navbar-expand-lg navbar-light bg-pink">
   <%= link_to "FoodStories", pages_home_path, class: "navbar-brand", id: "logo" %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <li><%= link_to "Users", users_path, class: "nav-link" %></li>
-        </li>
-        <li class="nav-item">
-          <li><%= link_to "All Recipes", recipes_path, class: "nav-link" %></li>
-        </li>
+      <li class="nav-item">
+        <li><%= link_to "Users", users_path, class: "nav-link" %></li>
+      </li>
+      <li class="nav-item">
+        <li><%= link_to "All Recipes", recipes_path, class: "nav-link" %></li>
+      </li>
 
       <% if logged_in? %>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Recipes
-          </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Create a new recipe", new_recipe_path, class: "dropdown-item" %>
-        </div>
+        </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <%= link_to "Create a new recipe", new_recipe_path, class: "dropdown-item" %>
+  </div>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= current_user.username.capitalize %>'s Profile <%= "Admin" if current_user.admin? %>
-          </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %>
-          <%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item" %>
-          <%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item" %> 
-          <% else %>
-          <li class="nav-item">
-          <%= link_to "Log in", login_path, class: "nav-link" %>
-          </li>
-          <% end %>
-
-
-            <li class="nav-item dropdown" style="list-style:none;">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Ingredients</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "All Ingredients", ingredients_path, class: "dropdown-item" %>
-            <ul><% Ingredient.all.each do |ingredient| %>
-              <li><%= link_to ingredient.name.capitalize, ingredient_path(ingredient) %></li>
-            <% end %>
-            </ul>
-            <% if logged_in? && current_user.admin? %>
-            <%= link_to "New Ingredient", new_ingredient_path, class: "dropdown-item" %>
-            <% end %>
-          </div>
-      </li>
-        </div>
+        </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %>
+      <%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item" %>
+      <%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item" %> 
         
-      
+        <% else %>
+        
+      <li class="nav-item">
+      <%= link_to "Log in", login_path, class: "nav-link" %>
+      </li>
+        
+        <% end %>
+
+
+      <li class="nav-item dropdown" style="list-style:none;">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Ingredients</a>
+  
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <%= link_to "All Ingredients", ingredients_path, class: "dropdown-item" %>
+    <ul><% Ingredient.all.each do |ingredient| %>
+      <li><%= link_to ingredient.name.capitalize, ingredient_path(ingredient) %></li>
+    <% end %>
+    </ul>
+            
+    <% if logged_in? && current_user.admin? %>
+    <%= link_to "New Ingredient", new_ingredient_path, class: "dropdown-item" %>
+    <% end %>
+  </div>
+      </li>
+  </div>     
 </nav>
     
