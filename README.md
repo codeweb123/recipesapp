@@ -1,6 +1,6 @@
 # recipesapp
 
-FoodStories recipe app is a Ruby on Rails application that uses OAuth and OmniAut to login to providers wuch as Github, Facebook and Google. The app helps you keep track of all your recipes in a single location with features to sort by ingredients, users or recipe names.
+FoodStories recipe app is a Ruby on Rails application that uses OAuth and OmniAuth to login to providers such as Github, Facebook and Google. The app helps you keep track of all your recipes in a single location with features to sort by ingredients, users or recipe names.
 
 ## Installing <recipesapp>
 
